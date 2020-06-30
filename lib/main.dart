@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_clone/Model/bottom_bar.dart';
+import 'package:youtube_clone/Model/channel.dart';
+import 'package:youtube_clone/Model/video.dart';
+import 'package:youtube_clone/View/video_view.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,6 +30,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+ final video = Video(
+    Image.asset("assets/images/thumb.jpg"),
+    "Some awsome video on youtube",
+    Channel(Image.asset("assets/images/profile.png"), "myChannel"),
+    "100000",
+    "about 4 minutes"
+  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,8 +46,12 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: const EdgeInsets.only(left: 10.0),
           child: Image(
             image: AssetImage("assets/images/youtube_logo.png"),
-            width: 10.0,
-            height: 10.0,
+          ),
+        ),
+        title: Text(
+          "YouTube",
+          style: TextStyle(
+            fontWeight: FontWeight.w400
           ),
         ),
         actions: <Widget>[
@@ -66,6 +81,23 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).primaryColor,
       ),
       backgroundColor: Theme.of(context).primaryColor,
+      body: ListView(
+        scrollDirection: Axis.vertical,
+        children: <Widget>[
+          VideoView(this.video),
+          SizedBox(height: 12.0,),
+          VideoView(this.video),
+          SizedBox(height: 12.0,),
+          VideoView(this.video),
+          SizedBox(height: 12.0,),
+          VideoView(this.video),
+          SizedBox(height: 12.0,),
+          VideoView(this.video),
+          SizedBox(height: 12.0,),
+          VideoView(this.video),
+          SizedBox(height: 12.0,)
+        ],
+      ),
       bottomNavigationBar: Theme(
           data: Theme.of(context).copyWith(
             canvasColor: Color(0xff444444),

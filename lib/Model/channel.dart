@@ -9,5 +9,6 @@ class Channel{
     this._channelProfile = profile;
   }
 
-  
+  Widget get channelProfile => this._channelProfile;
+  String get channelName => this._channelName;
 }
